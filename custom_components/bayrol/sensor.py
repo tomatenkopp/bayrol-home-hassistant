@@ -56,18 +56,22 @@ def _handle_sensor_value(sensor, value):
                 sensor._attr_native_value = "Filtration is on"
             case "19.105":
                 sensor._attr_native_value = "Water detected"
-            case "19.147":
-                sensor._attr_native_value = "Stopped (gas detected)"
-            case "19.195":
-                sensor._attr_native_value = "Auto"
-            case "19.115":
-                sensor._attr_native_value = "Auto Plus"
             case "19.106":
                 sensor._attr_native_value = "Constant production"
-            case "19.177":
-                sensor._attr_native_value = "On"
+            case "19.115":
+                sensor._attr_native_value = "Auto Plus"
+            case "19.142":
+                sensor._attr_native_value = "Open"
+            case "19.143":
+                sensor._attr_native_value = "Closed"
+            case "19.147":
+                sensor._attr_native_value = "Stopped (gas detected)"
             case "19.176":
                 sensor._attr_native_value = "Off"
+            case "19.177":
+                sensor._attr_native_value = "On"
+            case "19.195":
+                sensor._attr_native_value = "Auto"
             case "19.257":
                 sensor._attr_native_value = "Missing"
             case "19.258":

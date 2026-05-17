@@ -47,6 +47,9 @@ AUTOMATIC_MQTT_TO_TEXT_MAPPING = {
     "19.311": "Out - On",
     "19.100": "Out - Off",
     "19.345": "Out - Auto",
+    # Cover state mappings
+    "19.142": "Open",
+    "19.143": "Closed",
 }
 
 # MQTT value to display text mapping for PM5 models
@@ -760,6 +763,14 @@ SENSOR_TYPES_AUTOMATIC = {
     },
     "5.80": {
         "name": "pH Minus Canister Status",
+        "device_class": None,
+        "state_class": None,
+        "coefficient": None,
+        "unit_of_measurement": None,
+        "entity_type": "sensor",
+    },
+    "5.83": {
+        "name": "Cover",
         "device_class": None,
         "state_class": None,
         "coefficient": None,
