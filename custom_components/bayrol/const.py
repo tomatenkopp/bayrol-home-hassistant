@@ -48,6 +48,7 @@ AUTOMATIC_MQTT_TO_TEXT_MAPPING = {
     "19.100": "Out - Off",
     "19.345": "Out - Auto",
     # Cover state mappings
+    "19.55": "OFF",
     "19.142": "Open",
     "19.143": "Closed",
 }
