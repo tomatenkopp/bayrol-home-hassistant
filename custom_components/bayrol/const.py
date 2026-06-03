@@ -51,6 +51,8 @@ AUTOMATIC_MQTT_TO_TEXT_MAPPING = {
     "19.55": "OFF",
     "19.142": "Open",
     "19.143": "Closed",
+    # Event Message
+    "16": "Event Message",
 }
 
 # MQTT value to display text mapping for PM5 models
