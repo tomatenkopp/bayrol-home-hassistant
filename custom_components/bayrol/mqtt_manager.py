@@ -58,8 +58,15 @@ class BayrolMQTTManager:
 
         if topic in self._subscribers:
             try:
-                payload = msg.payload
-                value = json.loads(payload)["v"]
+                payload = json.loads(msg.payload)
+                if "subject" in payload:
+                    payload = msg.payload
+                    message = json.loads(payload)["text"]
+                    value = message if len(message) < 255 else message.split("Automatic")[0]
+                else:
+                    payload = msg.payload
+                    value = json.loads(payload)["v"]
+                    
                 # Schedule the callback in the event loop
                 self.hass.loop.call_soon_threadsafe(
                     lambda: self._subscribers[topic](value)
