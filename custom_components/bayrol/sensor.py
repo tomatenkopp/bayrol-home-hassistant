@@ -27,30 +27,6 @@ _LOGGER = logging.getLogger(__name__)
 
 def _handle_sensor_value(sensor, value):
     """Handle incoming sensor value."""
-    # 5-26 Handle JSON payloads (e.g. Event Topic 16) ---
-    if isinstance(value, str):
-        if value.strip().startswith("{"):
-            try:
-                data = json.loads(value)
-
-                if isinstance(data, dict):
-                    subject = data.get("subject")
-
-                    if subject:
-                        sensor._attr_native_value = subject
-
-                        # optional: full payload als attributes
-                        sensor._attr_extra_state_attributes = {
-                            "subject": subject,
-                            "text": data.get("text"),
-                        }
-
-                        if sensor.hass is not None:
-                            sensor.schedule_update_ha_state()
-
-                        return
-            except Exception:
-                pass
     # Check if this is a numeric sensor that should not be converted to strings
     is_numeric_sensor = (
         sensor._sensor_config.get("state_class") is not None
@@ -70,6 +46,16 @@ def _handle_sensor_value(sensor, value):
     else:
         # Handle string conversion for non-numeric sensors
         match value:
+            case "8.1":
+                sensor._attr_native_value = "Enjoy your pool"
+            case "8.33":
+                sensor._attr_native_value = "All OK"
+            case "8.44":
+                sensor._attr_native_value = "CL Dosing stopped, Limit reached"
+            case "8.5":
+                sensor._attr_native_value = "Flow stopped"
+            case "8.7":
+                sensor._attr_native_value = "Start Delay"
             case "19.18":
                 sensor._attr_native_value = "No"
             case "19.19":
